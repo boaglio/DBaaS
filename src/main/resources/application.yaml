@@ -1,0 +1,50 @@
+
+# default server port
+server:
+  port: 8080
+
+# Database
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    
+# DEBUG for development 
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        data: DEBUG
+    com:
+      boaglio: DEBUG
+
+# Actuator features (endpoint /actuator)
+management:
+  health:
+    db:
+      enabled: true
+    defaults:
+      enabled: true
+    diskspace:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - mappings
+
+# information (endpoint /info)   
+info:
+  app:
+    name: DB as a Service
+    version: @project.version@
+  java:
+     version: ${java.version}
+ 
