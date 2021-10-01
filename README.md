@@ -18,6 +18,15 @@ It is an easy and fast way to create queries as a service for databases, special
 * ready to use
 * Postman collection available
 
+## Build and run 
+
+```
+$ mvn clean 
+$ mvn spring-boot:run
+```
+
+Browse http://localhost:8080/
+
 ## Shots
 
 ### Homepage
@@ -42,3 +51,24 @@ $ curl -X POST localhost:8080/api/q -H 'Content-type:application/json' -d '{ "se
 [{"VERSION()":"10.6.4-MariaDB"}]
 
 ```
+
+# How to code this project
+
+## Architecture
+
+* Database - MySQL 
+* API - Spring Boot
+
+## How it works
+
+When the API is up, there is a table where the system stores dynamic SQLs, which can be called by REST service (all played internally by Spring JDBC Template).
+
+## Suggested tools
+
+* Database - DBeaver 
+* API - Spring Tools Suite for Spring Boot
+
+## Before coding
+
+Please take a look at available issues, there are some job that need to be done. 
+
