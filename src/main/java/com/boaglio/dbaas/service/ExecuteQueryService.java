@@ -40,7 +40,7 @@ public class ExecuteQueryService {
                     version);
 
             if (serviceSQL.isPresent()) {
-                sql = serviceSQL.get().getSql();
+                sql = serviceSQL.get().sql();
                 if (params != null) {
                     result = jdbcTemplate.queryForList(sql, params.toArray());
                 } else {

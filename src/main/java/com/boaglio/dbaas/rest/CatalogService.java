@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.boaglio.dbaas.domain.ServiceSQL;
 import com.boaglio.dbaas.repo.ServiceSQLRepository;
 
-import lombok.extern.java.Log;
 
-@Log
 @RestController
 @RequestMapping("/api/catalog")
 public class CatalogService {
+
+    private static final Logger log = LoggerFactory.getLogger(CatalogService.class);
 
     @Autowired
     ServiceSQLRepository repository;
@@ -50,7 +52,7 @@ public class CatalogService {
 
         ServiceSQL stored = repository.save(servicesql);
 
-        if (stored.getId() != null)
+        if (stored.id() != null)
             return "Ok";
         else
             return "Error";
@@ -59,8 +61,8 @@ public class CatalogService {
     @PutMapping("/sql")
     public String updateSQL(@RequestBody ServiceSQL servicesql) {
 
-        if (servicesql.getId() != null) {
-            Optional<ServiceSQL> storedOpt = repository.findById(servicesql.getId());
+        if (servicesql.id() != null) {
+            Optional<ServiceSQL> storedOpt = repository.findById(servicesql.id());
             if (storedOpt.isPresent()) {
                 repository.save(servicesql);
                 return "Ok";

@@ -9,8 +9,8 @@ It is an easy and fast way to create queries as a service for databases, special
 
 ## Features
 
-* Java 11 based
-* Spring Boot 2.5 based
+* Java 21 based
+* Spring Boot 3.4.1 based
 * Swagger ready 
 * Simple API
 * Simple Unit test
@@ -28,11 +28,7 @@ $ mvn spring-boot:run
 Browse http://localhost:8080/
 
 ## Shots
-
-### Homepage
-
-![Home](doc/api1.png)
-
+ 
 ### Swagger
 
 ![Swagger](doc/api2.png)
