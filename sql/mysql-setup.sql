@@ -1,3 +1,7 @@
+create database test;
+
+use test;
+
 create table dbaas_catalog (
     id integer not null auto_increment primary key, 
     service varchar(100),
@@ -6,13 +10,13 @@ create table dbaas_catalog (
     full_sql varchar(16000),
     created timestamp default now(), 
     updated timestamp default now() on update now()
-)
+);
 
- INSERT INTO municipios.dbaas_catalog (`method`,version,full_sql,created,updated) VALUES ('catalog','v1','select VERSION()',now(),now())
+INSERT INTO dbaas_catalog(service,method,version,full_sql) VALUES ('sample','catalog','v1','select VERSION()');
 	 
- INSERT INTO municipios.dbaas_catalog (`method`,version,full_sql,created,updated) VALUES ('schemas','v1','select SCHEMA_NAME FROM information_schema.schemata order by 1',now(),now())
+INSERT INTO dbaas_catalog(service,method,version,full_sql) VALUES ('sample','schemas','v1','select SCHEMA_NAME FROM information_schema.schemata order by 1');
 	 
- INSERT INTO municipios.dbaas_catalog (`method`,version,full_sql,created,updated) VALUES ('tables','v1','select TABLE_SCHEMA ,TABLE_NAME, engine  FROM information_schema.TABLES order by 1,2',now(),now())
-	 
- INSERT INTO municipios.dbaas_catalog (`method`,version,full_sql,created,updated) VALUES ('tables-by-schema','v1','select TABLE_SCHEMA ,TABLE_NAME, engine FROM information_schema.TABLES WHERE TABLE_SCHEMA=? order by 1,2',now(),now());
+INSERT INTO dbaas_catalog(service,method,version,full_sql) VALUES ('sample','tables','v1','select TABLE_SCHEMA ,TABLE_NAME, engine  FROM information_schema.TABLES order by 1,2');
+
+INSERT INTO dbaas_catalog(service,method,version,full_sql) VALUES ('sample','tables-by-schema','v1','select TABLE_SCHEMA ,TABLE_NAME, engine FROM information_schema.TABLES WHERE TABLE_SCHEMA=? order by 1,2');
  
