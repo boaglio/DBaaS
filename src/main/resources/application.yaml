@@ -47,4 +47,13 @@ info:
     version: @project.version@
   java:
      version: ${java.version}
- 
+
+springdoc:
+  version: 1.0
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+  #  TODO: not working
+  #  path: /swagger-ui
+    use-root-path: true
+  writer-with-order-by-keys: true
